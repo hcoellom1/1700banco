@@ -3,6 +3,10 @@ package hn.unah.lenguajes.banco.modelos;
 import java.util.Date;
 import java.util.List;
 
+
+import org.hibernate.annotations.Cascade;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -38,11 +42,10 @@ public class Clientes {
     @Column(name="fechaingreso")
     private Date fechaIngreso; 
 
-    @OneToOne
-    @JoinColumn(name="iddireccion")
+    @OneToOne(mappedBy = "cliente",  cascade =  CascadeType.ALL)    
     private Direcciones direccion;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Cuenta> cuentas;
-    
+     
 }

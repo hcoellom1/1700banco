@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class Movimiento {
 
     @Id
     @Column(name="idmovimiento")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMovimiento;
 
     @Column(name="fechamovimiento")
@@ -36,6 +37,7 @@ public class Movimiento {
     private char tipoMovimiento;
 
     @ManyToOne
+    @JoinColumn(name="idcuenta", referencedColumnName = "idcuenta")
     private Cuenta cuenta;
     
 }

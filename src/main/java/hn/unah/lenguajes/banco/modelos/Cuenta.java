@@ -3,6 +3,7 @@ package hn.unah.lenguajes.banco.modelos;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Cuenta {
 
     @Id
     @Column(name="idcuenta")
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int idCuenta;
 
     @Column(name="fechaapertura")
@@ -42,10 +43,10 @@ public class Cuenta {
     private char tipoCuenta;
 
     @ManyToOne
-    @JoinColumn(name="dni")
+    @JoinColumn(name="dni", referencedColumnName = "dni")
     private Clientes cliente;
 
-    @OneToMany(mappedBy = "cuenta")
+    @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
     private List<Movimiento> movimientos;
 
 }
