@@ -27,8 +27,7 @@ import jakarta.persistence.OneToOne;
 @AllArgsConstructor
 public class Clientes {
 
-    @Id
-    @Column(name="dni")
+    @Id    
     private String dni;
 
     private String nombre;

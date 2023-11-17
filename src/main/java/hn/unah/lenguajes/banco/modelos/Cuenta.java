@@ -3,6 +3,8 @@ package hn.unah.lenguajes.banco.modelos;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,6 +44,7 @@ public class Cuenta {
     @Column(name="tipocuenta")
     private char tipoCuenta;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="dni", referencedColumnName = "dni")
     private Clientes cliente;

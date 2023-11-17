@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.lenguajes.banco.modelos.Clientes;
 import hn.unah.lenguajes.banco.servicios.impl.ClienteServiceImpl;
+import hn.unah.lenguajes.banco.servicios.impl.CuentaServiceImpl;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -23,6 +24,7 @@ public class ClienteController {
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;
 
+    
     @PostMapping("/guardar")
     public Clientes guardarCliente(@RequestBody Clientes nvoCliente){
         if(nvoCliente.getDireccion() != null){
@@ -48,5 +50,7 @@ public class ClienteController {
                                     @RequestBody Clientes cliente){
         return this.clienteServiceImpl.actualizarCliente(dni, cliente);
     }
+
+
     
 }
